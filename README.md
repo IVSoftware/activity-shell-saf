@@ -1,4 +1,4 @@
-One of many ways to do this is to make a common base class for the application's Forms and use the `Application.OpenForms` collection to make an ad hoc form manager for it. 
+One of many ways to do this is to make a common base class for the application's Forms and use the `Application.OpenForms` collection to make an ad hoc form manager for it. The one tricky thing when using `Show()` in repeated visibility cycles because the `Close` method will destroy the window handle if called is called. For this reason, the `BaseActivity` class below will attach a canceller method to the `FormClosing` event and remove it when the application is shutting down.
 
 **Minimal example with Flow Layout**
 - New forms will open to the right of visible forms.
