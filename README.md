@@ -2,8 +2,10 @@ One of many ways to do this is to make a common base class for the application's
 
 **Minimal example with Flow Layout**
 - New forms will open to the right of visible forms.
-- On [X] close and slide remaining visible forms to the left (animated)
-- [HomeIcon] so that when you **click on the main menu all the old pages that were opened are closed**.
+- Click [HomeIcon] to close _all_ child windows, leaving only the main window open.
+- Click [X] to close single window and slide remaining visible forms to the left (animated)
+
+This way, when you **click on the main menu all the old pages that were opened are closed**.
 
 ![screenshot](https://github.com/IVSoftware/activity-shell/blob/saf-version/activity-shell/Screenshots/screenshot.png)
 ***
