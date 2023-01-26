@@ -87,14 +87,14 @@ namespace activity_shell
             }
         }
 
-        internal static BaseActivity[] VisibleForms => Application
+        internal static BaseActivity[] VisibleForms => 
+            Application
             .OpenForms
             .Cast<BaseActivity>()
             .Where(_ => _.Visible)
             .ToArray();
-        internal static BaseActivity[] VisibleChildForms => Application
-            .OpenForms
-            .Cast<BaseActivity>()
+        internal static BaseActivity[] VisibleChildForms => 
+            VisibleForms
             .Where(_ => !_.GetType().Name.Equals(nameof(HomeActivity)))
             .Where(_ => _.Visible)
             .ToArray();
