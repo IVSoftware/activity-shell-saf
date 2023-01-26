@@ -17,28 +17,27 @@ This way, when you **click on the main menu all the old pages that were opened a
     {
         public static HomeActivity? MainWnd { get; protected set; }
 
-**Utility collections made from `Application.OpenForms`**
+Utility collections made from `Application.OpenForms`
 
-        internal static BaseActivity[] VisibleForms => Application
+        internal static BaseActivity[] VisibleForms => 
+            Application
             .OpenForms
             .Cast<BaseActivity>()
             .Where(_ => _.Visible)
             .ToArray();
-        internal static BaseActivity[] VisibleChildForms => Application
-            .OpenForms
-            .Cast<BaseActivity>()
+        internal static BaseActivity[] VisibleChildForms => 
+            VisibleForms
             .Where(_ => !_.GetType().Name.Equals(nameof(HomeActivity)))
-            .Where(_ => _.Visible)
-            .ToArray();            
+            .ToArray();           
 
 
-**"When I click on the main menu all the old pages that were opened are closed."**
+"When I click on the main menu all the old pages that were opened are closed."
 
         internal void OnClickHome(object? sender, EventArgs e){
             foreach (var form in VisibleChildForms) form.Hide();
         }
 
-**Any form can open other windows.**
+Any form can open other windows.
 
         protected virtual void MenuItemClicked(string activity)
         {
@@ -83,7 +82,7 @@ This way, when you **click on the main menu all the old pages that were opened a
         }
     }
 
-**After closing single window with [X] slide the window positions over (animated) to fill in the gap.**
+After closing single window with [X] slide the window positions over (animated) to fill in the gap.
 
         internal void OnClickX(object? sender, EventArgs e)
         {

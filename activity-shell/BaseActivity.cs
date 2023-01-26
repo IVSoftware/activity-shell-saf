@@ -96,7 +96,6 @@ namespace activity_shell
         internal static BaseActivity[] VisibleChildForms => 
             VisibleForms
             .Where(_ => !_.GetType().Name.Equals(nameof(HomeActivity)))
-            .Where(_ => _.Visible)
             .ToArray();
     }
 }
