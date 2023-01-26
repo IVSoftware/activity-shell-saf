@@ -16,6 +16,21 @@ This way, when you **click on the main menu all the old pages that were opened a
     public class BaseActivity : Form
     {
         public static HomeActivity? MainWnd { get; protected set; }
+        
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (!DesignMode)
+            {
+                FormClosing -= OnActivityClosing; // In case handle is recreated
+                FormClosing += OnActivityClosing;
+            }
+        } 
+        protected void OnActivityClosing(object? sender, FormClosingEventArgs e) { 
+            e.Cancel = true; // Prevent destruction of handle if `Close` is called.
+            Hide();
+        }
+
 
 Utility collections made from `Application.OpenForms`
 
