@@ -9,6 +9,8 @@ namespace activity_shell
             base.OnLoad(e);
             labelHome.Font = Glyphs;
             labelHome.Text = "\uE805";
+            labelIcon.Font = Glyphs;
+            labelIcon.Text = "\uE803";
             labelTitle.Text = GetType().Name.Replace("Activity", " Activity");
             labelHome.Click += OnClickHome;
             labelX.Click += OnClickX;

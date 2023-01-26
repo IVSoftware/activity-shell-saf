@@ -1,5 +1,6 @@
-One of many ways to do this is to make a common base class for the application's Forms and use the `Application.OpenForms` collection to make an ad hoc form manager for it. The one tricky thing when using `Show()` in repeated visibility cycles is that the `Close` method will destroy the window handle if called. For this reason, the `BaseActivity` class below will attach a canceller method to the `FormClosing` event and remove it when the application is shutting down.
+One of many ways to do this is to make a common base `Form` class and use the `Application.OpenForms` collection to make an ad hoc manager for forms that inherit it. The one tricky thing when using `Show()` in repeated visibility cycles is that the `Close` method will destroy the window handle if called. For this reason, the `BaseActivity` class below will attach a canceller method to the `FormClosing` event and remove it when the application is shutting down.
 
+***
 **Minimal example with Flow Layout**
 - New forms will open to the right of visible forms.
 - Click [HomeIcon] to close _all_ child windows, leaving only the main window open.
@@ -7,9 +8,10 @@ One of many ways to do this is to make a common base class for the application's
 
 This way, when you **click on the main menu all the old pages that were opened are closed**.
 
-![screenshot](https://github.com/IVSoftware/activity-shell/blob/saf-version/activity-shell/Screenshots/screenshot.png)
-***
 
+[![screenshot][1]][1]
+
+***
 
     public class BaseActivity : Form
     {
@@ -81,7 +83,7 @@ This way, when you **click on the main menu all the old pages that were opened a
         }
     }
 
-**If individual windows are closed with an [X] slide the window positions over (animated) to fill in the gap.**
+**After closing single window with [X] slide the window positions over (animated) to fill in the gap.**
 
         internal void OnClickX(object? sender, EventArgs e)
         {
@@ -103,3 +105,4 @@ This way, when you **click on the main menu all the old pages that were opened a
     }
 
 
+  [1]: https://i.stack.imgur.com/wqL44.png

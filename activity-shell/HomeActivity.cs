@@ -23,6 +23,8 @@ namespace activity_shell
             labelTitle.Text = GetType().Name.Replace("Activity", " Activity");
             labelMenu.Font = Glyphs;
             labelMenu.Text = "\uE801";
+            labelIcon.Font = Glyphs;
+            labelIcon.Text = "\uE805";
             labelMenu.Click += (sender, e) => {
                 contextMenuStrip.Show(labelMenu.PointToScreen(
                     new Point(
