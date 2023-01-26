@@ -1,4 +1,4 @@
-One of many ways to do this is to make a common base `Form` class and use the `Application.OpenForms` collection to make an ad hoc manager for forms that inherit it. The one tricky thing when using `Show()` in repeated visibility cycles is that the `Close` method will destroy the window handle if called. For this reason, the `BaseActivity` class below will attach a canceller method to the `FormClosing` event and remove it when the application is shutting down.
+One of many ways to do this is to make a common base `Form` class and use the `Application.OpenForms` collection to make an ad hoc manager for forms that inherit it. The one tricky thing when using `Show()` in repeated visibility cycles is that the `Close()` method will destroy the window handle if called. For this reason, the `BaseActivity` class below will attach a canceler method to the `FormClosing` event and remove it when the application is shutting down.
 
 ***
 **Minimal example with Flow Layout**
