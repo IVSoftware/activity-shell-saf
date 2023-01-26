@@ -6,7 +6,15 @@ namespace activity_shell
 {
     public class BaseActivity : Form
     {
-        public BaseActivity() => FormClosing += OnActivityClosing;
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (!DesignMode)
+            {
+                FormClosing -= OnActivityClosing; // In case handle is recreated
+                FormClosing += OnActivityClosing;
+            }
+        } 
         protected void OnActivityClosing(object? sender, FormClosingEventArgs e) { 
             e.Cancel = true; // Prevent destruction of handle if `Close` is called.
             Hide();
